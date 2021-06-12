@@ -128,6 +128,15 @@ def edit(request, id):
         return redirect(f'/one_event/{id}')
 
 
+def add_like(request, id):
+
+    liked_event = Event.objects.get(id=id)
+    user = User.objects.get(id=request.session['user_id'])
+    liked_event.user_likes.add(user)
+
+    return redirect('/welcome')
+
+
 def delete_event(request, id):
     destroyed = Event.objects.get(id=id)
     destroyed.delete()

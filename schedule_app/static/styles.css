@@ -27,7 +27,9 @@ h4 {
 .lead {
   text-align: center;
 }
-
+.lower {
+  margin-left: 80px;
+}
 .container {
   border-radius: 25px;
   padding: 20px;
