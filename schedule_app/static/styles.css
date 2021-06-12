@@ -1,0 +1,48 @@
+body {
+  background-color: #f79327;
+}
+
+.jumbotron {
+  max-height: 190px;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  font-family: cursive;
+}
+
+h1 {
+  text-align: center;
+  text-shadow: 3px 3px 3px #f79327;
+}
+
+h2 {
+  color: whitesmoke;
+  display: inline-block;
+  text-align: center;
+}
+h4 {
+  font-family: ;
+}
+.inner,
+.lead {
+  text-align: center;
+}
+
+.container {
+  border-radius: 25px;
+  padding: 20px;
+}
+
+h3 {
+  font-family: "Sofia", sans-serif;
+  font-size: 40px;
+}
+.parent {
+  background-image: url("img/City\ lights.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#w3 {
+  border-radius: 25px;
+  justify-content: center;
+}

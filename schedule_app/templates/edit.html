@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css'%}" />
+  </head>
+  <body>
+    <div class="container">
+
+    <h1 style="font-family: Brush Script MT", cursive>Edit Event</h1>
+    <form action="/edit/{{event.id}}" class="form-block" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          class="form-control"
+          value="{{event.title}}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          name="description"
+          id="description"
+          cols="30"
+          rows="5"
+          class="form-control"
+        >
+{{ event.description }}</textarea
+        >
+      </div>
+     
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input
+          type="text"
+          name="location"
+          id="location"
+          class="form-control"
+          value="{{event.location}}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="date_time">Date and Time</label>
+        <input
+          type="date"
+          name="date_time"
+          id="date_time"
+          class="form-control"
+          value="{{ event.date_time | date:'m-d-Y' }}"
+        />
+      </div><br>
+      <button class="badge badge-secondary">Update</button> | <a href="/welcome" class="badge badge-secondary"  style="color: black">Go Back</a> 
+    </div> 
+    
+    </form>
+    
+  </body>
+</html>
