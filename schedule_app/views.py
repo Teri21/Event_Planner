@@ -106,6 +106,10 @@ def one_event(request, id):
 
 
 def edit(request, id):
+    if "user_id" not in request.session:
+        return redirect('/login')
+    user_id = request.session["user_id"]
+    user = User.objects.get(id=user_id)
 
     one_event = Event.objects.get(id=id)
 

@@ -10,6 +10,7 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css'%}" />
     <title>Success</title>
@@ -52,7 +53,7 @@
       </div>
       <div class="container-md">
         <div class="row justify-content-center">
-          <form action="/create_event" class="form-block" method="POST">
+          <form id-"createEvent" action="/create_event" class="form-block" method="POST">
             {% csrf_token %}
             <div class="form-group">
               <label class="title p-2"> Event Title: </label>
@@ -111,7 +112,7 @@
             <div class="d-flex justify-content-between px-3">
               <span
                 >{{ event.user_likes.count }}
-                <a href="/add_like/{{event.id}}" class="btn btn-secondary"
+                <a href="/add_like/{{event.id}}"  class="btn btn-secondary"
                   >Likes</a
                 ></span
               >
