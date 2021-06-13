@@ -28,7 +28,9 @@ h4 {
   text-align: center;
 }
 .lower {
-  margin-left: 80px;
+  display: block;
+  align-content: flex-end;
+  margin: 0 auto;
 }
 .container {
   border-radius: 25px;

@@ -19,7 +19,7 @@
   <body>
     <br />
     <div id="w3">
-    <div class="w3-container p-4" style="background: rgb(157, 170, 170)">
+    <div class="w3-container-md p-4" style="background: rgb(157, 170, 170)">
         <div class="inner">
             <h3 class="font-effect-fire">{{ event.title }}</h3>
 
@@ -32,21 +32,13 @@
             <p>{{ event.date_time }}</p>
         </div>
     </div>
+    <div class="lower">
+        <iframe  width="350"  height="200" frameborder="0" style="border:0"  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD5yitrheqc5MQbu2iS3bY6ut7mo4asqT4&q={{event.location}}" allowfullscreen>
+        </iframe>
+    </div>
+
     
-    <iframe
-  width="350"
-  height="200"  
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD5yitrheqc5MQbu2iS3bY6ut7mo4asqT4&q={{event.location}}" allowfullscreen>
-</iframe>
-
-</div>
-</div>
-<a href="/welcome" style="color: black">Go Back</a> |
-<a href="/edit/{{event.id}}" style="color: black">Edit</a></span></p>
-
-
-  
-    
+    <a href="/welcome" style="color: black">Go Back</a> |
+    <a href="/edit/{{event.id}}" style="color: black">Edit</a></span></p>    
   </body>
 </html>
