@@ -1,0 +1,17 @@
+<br />
+<!-- id="box" -->
+<!-- style="text-align: center; background: #588ca8"> -->
+<div id="box">
+  <a class="partial-top" href="/one_event/{{ event.id }}">{{event.title}}</a>
+  <p>{{event.description}}</p>
+  <p>{{event.location}}</p>
+  <p>{{event.date_time}}</p>
+
+  <a href="delete_event/{{event.id}}" style="color: rgb(141, 42, 42)">Delete</a>
+  <div class="d-flex justify-content-between px-3">
+    <span
+      >{{ event.user_likes.count }}
+      <a href="/add_like/{{event.id}}" class="btn btn-secondary">Likes</a></span
+    >
+  </div>
+</div>

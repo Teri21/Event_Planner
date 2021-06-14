@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import *
@@ -80,6 +81,13 @@ def welcome(request):
     return render(request, "welcome.html", context)
 
 
+def partial(request, id):
+    context = {
+        "event": Event.objects.get(id=id)
+    }
+    return render(request, "partial.html", context)
+
+
 def create_event(request):
     created_by = User.objects.get(id=request.session['user_id'])
     event = Event.objects.create(
@@ -90,7 +98,8 @@ def create_event(request):
         user=created_by,
     )
 
-    return redirect('/welcome')
+    # return redirect('/welcome')
+    return redirect(f'/partial/{event.id}')
 
 
 def one_event(request, id):
@@ -106,10 +115,12 @@ def one_event(request, id):
 
 
 def edit(request, id):
-    if "user_id" not in request.session:
-        return redirect('/login')
     user_id = request.session["user_id"]
     user = User.objects.get(id=user_id)
+
+    if user_id != user.id:
+
+        return redirect('/welcome')
 
     one_event = Event.objects.get(id=id)
 
@@ -121,11 +132,10 @@ def edit(request, id):
         return render(request, "edit.html", context)
 
     else:
-        update = Event.objects.get(id=id)
-
-        update.title = request.POST["title"]
-        update.description = request.POST["description"]
-        update.location = request.POST["location"]
+        update = Event.objects.get(id=id),
+        update.title = request.POST["title"],
+        update.description = request.POST["description"],
+        update.location = request.POST["location"],
         update.date_time = request.POST["date_time"]
 
         update.save()
@@ -142,6 +152,7 @@ def add_like(request, id):
 
 
 def delete_event(request, id):
+    user = User.objects.get(id=request.session['user_id'])
     destroyed = Event.objects.get(id=id)
     destroyed.delete()
     return redirect('/welcome')

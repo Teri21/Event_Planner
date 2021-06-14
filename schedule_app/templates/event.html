@@ -39,6 +39,6 @@
 
     
     <a href="/welcome" style="color: black">Go Back</a> |
-    <a href="/edit/{{event.id}}" style="color: black">Edit</a></span></p>    
+    {% if request.session.user_id == event.user.id %}<a href="/edit/{{event.id}}" style="color: black">Edit</a>{% endif %}</span></p>    
   </body>
 </html>

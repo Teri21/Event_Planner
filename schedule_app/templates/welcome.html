@@ -13,6 +13,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css'%}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="{% static 'post.js' %}"></script>
     <title>Success</title>
   </head>
   <body>
@@ -53,7 +55,8 @@
       </div>
       <div class="container-md">
         <div class="row justify-content-center">
-          <form id-"createEvent" action="/create_event" class="form-block" method="POST">
+          <!-- id "createEvent is used to be identified inside jQuery" -->
+          <form id="createEvent" action="/create_event" class="form-block" method="POST">
             {% csrf_token %}
             <div class="form-group">
               <label class="title p-2"> Event Title: </label>
@@ -88,49 +91,26 @@
             </div>
             <button class="btn btn-success btn-sm">Schedule Event</button>
           </form>
-          <br />
-
-          {% for event in events reversed %}
-          <br />
-
-          <div
-            class="container"
-            style="text-align: center; background: #588ca8"
-          >
-            <a
-              href="/one_event/{{ event.id }}"
-              style="font-size: 25px; color: rgb(37, 32, 32)"
-              >{{event.title}}</a
-            >
-            <p>{{event.description}}</p>
-            <p>{{event.location}}</p>
-            <p>{{event.date_time}}</p>
-
-            <a href="delete_event/{{event.id}}" style="color: rgb(141, 42, 42)"
-              >Delete</a
-            >
-            <div class="d-flex justify-content-between px-3">
-              <span
-                >{{ event.user_likes.count }}
-                <a href="/add_like/{{event.id}}"  class="btn btn-secondary"
-                  >Likes</a
-                ></span
-              >
+        </div>
+            <br />
+            <div class="row">
+              
+            <div class="all_events">
+              {% for event in events reversed %}
+          
+              {% include "partial.html" %}
+            
+              {% endfor %}
             </div>
           </div>
-        </div>
-        {% endfor %}
-      </div>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
+    
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
+    
+    
   </body>
 </html>
