@@ -28,7 +28,7 @@ h2 {
 h4 {
   font-family: youth touch;
 }
-.inner,
+.inner-sm,
 .lead-md {
   text-align: center;
 }
@@ -57,7 +57,7 @@ h3 {
   background-size: cover;
   background-repeat: no-repeat;
 }
-#w3 {
+#w3-sm {
   border-radius: 25px;
   justify-content: center;
 }
